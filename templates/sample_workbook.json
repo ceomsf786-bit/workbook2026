@@ -1,0 +1,29 @@
+{
+  "note": "Human-readable example of the workbook data model. For actual attachment-preserving import/export, use the ZIP package created inside the app.",
+  "workbook": {
+    "title": "Term 3 Geography Workbook",
+    "subject": "Geography",
+    "grade": 6,
+    "term": 3,
+    "description": "Climate and vegetation around the world"
+  },
+  "activities": [
+    {
+      "unit": "Climate around the world",
+      "title": "Weather and climate",
+      "instructions": "Answer in full sentences in your exercise book, then upload clear photos.",
+      "total_marks": 10,
+      "date_loaded": "2026-08-08",
+      "due_date": "2026-08-11",
+      "questions": [
+        "Explain the difference between weather and climate.",
+        "Name one hot climate region and one cold climate region."
+      ],
+      "memo": [
+        "Weather is the short-term condition of the atmosphere; climate is the long-term average pattern.",
+        "Accept any valid examples."
+      ],
+      "memo_released": false
+    }
+  ]
+}
