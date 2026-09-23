@@ -409,7 +409,8 @@ function studentActivityModal(book,a){
     e.preventDefault();
     const form=e.currentTarget;
     const btn=e.submitter;
-    const files=[...form.elements.files.files,...form.elements.camera.files];
+    const pickFiles=name=>[...((form.elements[name]?.files)||[])];
+    const files=[...pickFiles('files'),...pickFiles('camera')];
     const typedAnswers=$$('[data-typed-answer]',form).sort((x,y)=>Number(x.dataset.typedAnswer)-Number(y.dataset.typedAnswer)).map(x=>x.value);
     const hasTyped=typedAnswers.some(x=>x.trim());
     if(!files.length&&!hasTyped)return toast('Type at least one answer or choose an image/PDF.',true);
@@ -426,7 +427,7 @@ function studentActivityModal(book,a){
       closeModal();
       renderStudentHub(studentHubCache);
       toast('Answers submitted successfully. This activity is now locked.');
-    }catch(err){setBusy(btn,false);toast(err.message,true);}
+    }catch(err){console.error(err);setBusy(btn,false);toast(err.message||String(err),true);}
   };
 }
 
@@ -443,4 +444,3 @@ async function teacherLinkLogin(){
 }
 async function boot(){ if(!configured)return setupScreen(); if(studentToken)return startStudent(); if(teacherLinkToken)return teacherLinkLogin(); return startTeacher(); }
 boot();
-
